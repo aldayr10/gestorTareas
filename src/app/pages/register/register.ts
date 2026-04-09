@@ -24,8 +24,6 @@ export class Register {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-      nombre: ['', Validators.required],
-      fechaNacimiento: ['', Validators.required]
     }, { validators: this.passwordMatchValidator });
 
   }
@@ -51,7 +49,6 @@ export class Register {
 
       const newUser = {
         idUser: 0,
-        name: formValue.nombre,
         email: formValue.email,
         password: formValue.password
       };
