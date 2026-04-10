@@ -1,0 +1,48 @@
+<h2>
+  {{ data?.tarea ? 'Editar Tarea' : 'Nueva Tarea' }}
+</h2>
+
+<form [formGroup]="form">
+
+  <div>
+    <label>Título</label>
+    <input type="text" formControlName="titulo">
+  </div>
+
+  <div>
+    <label>Descripción</label>
+    <textarea formControlName="descripcion"></textarea>
+  </div>
+
+
+  <div>
+    <label>Estado</label>
+    <select formControlName="idEstado">
+      <option value="">Seleccione estado</option>
+      @for (estado of data.estados; track estado.id) {
+        <option [value]="estado.id">
+          {{ estado.nombre }}
+        </option>
+      }
+    </select>
+  </div>
+
+  <div>
+    <label>Prioridad</label>
+    <select formControlName="idPrioridad">
+      <option value="">Seleccione prioridad</option>
+      @for (p of data.prioridades; track p.id) {
+        <option [value]="p.id">
+          {{ p.nombre }}
+        </option>
+      }
+    </select>
+  </div>
+
+</form>
+
+
+<div>
+  <button type="button" (click)="cerrar()">Cancelar</button>
+  <button type="button" (click)="guardar()">Guardar</button>
+</div>

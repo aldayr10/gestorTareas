@@ -16,9 +16,22 @@ export class TareaService {
   }
   obternerTodasLasTareas(){
     this.tareaSubject.next([...this.tareas])
-    return this.tareas$
+  }
+  agregarTarea(tarea:Tarea){
+    this.tareas.push(tarea)
+    this.tareaSubject.next([...this.tareas])
   }
 
+  actualizarTarea(tarea:Tarea){
+  this.tareas=this.tareas.map(t =>
+    t.idTarea === tarea.idTarea ? tarea : t
+  );
+    
+  this.tareaSubject.next([...this.tareas])
+  }
 
+  eliminarTarea(){
+    
+  }
 
 }
