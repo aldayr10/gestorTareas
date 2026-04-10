@@ -90,6 +90,8 @@ export class GestorTareas {
 
     ref.afterClosed().subscribe(result => {
       if (result) {
+        console.log(result);
+        
         this.tareaService.actualizarTarea(result);
       }
     });

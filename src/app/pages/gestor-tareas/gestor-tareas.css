@@ -1,7 +1,11 @@
 .overley {
     display: flex;
     justify-content: center;
-    width: 100%;
+    align-items: center;
+    margin: 20px;
+    padding:  10px;
+    border: 2px outset #000000;
+    
 }
 
 .tittle{

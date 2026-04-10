@@ -1,0 +1,18 @@
+.overlay{
+    display: grid;
+    grid-template-columns: 80%;
+    justify-content: center;
+    margin: 20px;
+    border: 2px outset #000000;
+    padding: 20px;
+}
+div{
+    display: grid;
+    padding: 10px;
+    grid-column: auto;
+}
+.buttons{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}

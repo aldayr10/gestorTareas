@@ -11,6 +11,7 @@ export class TareaService {
   private tareas:Tarea[]=Tareas
   private tareaSubject=new BehaviorSubject<Tarea[]>([])
   tareas$=this.tareaSubject.asObservable()
+  consecutivo:number=2;
   constructor(){
     
   }
@@ -18,15 +19,22 @@ export class TareaService {
     this.tareaSubject.next([...this.tareas])
   }
   agregarTarea(tarea:Tarea){
+    this.consecutivo=this.consecutivo+1;
+    tarea.idTarea=this.consecutivo
+    console.log(tarea);
+    
     this.tareas.push(tarea)
     this.tareaSubject.next([...this.tareas])
   }
 
   actualizarTarea(tarea:Tarea){
-  this.tareas=this.tareas.map(t =>
-    t.idTarea === tarea.idTarea ? tarea : t
-  );
+    console.log(tarea);
     
+    this.tareas=this.tareas.map(t =>
+      t.idTarea === tarea.idTarea ? tarea : t
+    );
+  console.log(this.tareas);
+  
   this.tareaSubject.next([...this.tareas])
   }
 

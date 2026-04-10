@@ -1,48 +1,51 @@
-<h2>
-  {{ data?.tarea ? 'Editar Tarea' : 'Nueva Tarea' }}
-</h2>
+<div class="overlay">
 
-<form [formGroup]="form">
+  <h2>
+    {{ data?.tarea ? 'Editar Tarea' : 'Nueva Tarea' }}
+  </h2>
 
-  <div>
-    <label>Título</label>
-    <input type="text" formControlName="titulo">
-  </div>
+  <form [formGroup]="form">
 
-  <div>
-    <label>Descripción</label>
-    <textarea formControlName="descripcion"></textarea>
-  </div>
+    <div>
+      <label>Título</label>
+      <input type="text" formControlName="titulo">
+    </div>
+
+    <div>
+      <label>Descripción</label>
+      <textarea formControlName="descripcion"></textarea>
+    </div>
 
 
-  <div>
-    <label>Estado</label>
-    <select formControlName="idEstado">
-      <option value="">Seleccione estado</option>
-      @for (estado of data.estados; track estado.id) {
-        <option [value]="estado.id">
+    <div>
+      <label>Estado</label>
+      <select  formControlName="idEstado">
+        
+        @for (estado of data.estados; track estado.id) {
+        <option  [ngValue]="estado.id" >
           {{ estado.nombre }}
         </option>
-      }
-    </select>
-  </div>
+        }
+      </select>
+    </div>
 
-  <div>
-    <label>Prioridad</label>
-    <select formControlName="idPrioridad">
-      <option value="">Seleccione prioridad</option>
-      @for (p of data.prioridades; track p.id) {
-        <option [value]="p.id">
-          {{ p.nombre }}
+    <div>
+      <label>Prioridad</label>
+      <select formControlName="idPrioridad">
+        
+        @for (prioridad of data.prioridades; track prioridad.id) {
+        <option [ngValue]="prioridad.id" >
+          {{ prioridad.nombre }}
         </option>
-      }
-    </select>
+        }
+      </select>
+    </div>
+
+  </form>
+
+
+  <div class="buttons">
+    <button type="button" (click)="cerrar()">Cancelar</button>
+    <button type="button" (click)="guardar()">Guardar</button>
   </div>
-
-</form>
-
-
-<div>
-  <button type="button" (click)="cerrar()">Cancelar</button>
-  <button type="button" (click)="guardar()">Guardar</button>
 </div>
