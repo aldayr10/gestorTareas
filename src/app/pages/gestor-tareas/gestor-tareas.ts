@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { CatEstadoService } from '../../services/cat-estado-service';
 import { CatPrioridadesService } from '../../services/cat-prioridades-service';
 import { NuevaTarea } from './nueva-tarea/nueva-tarea';
+import { EliminarTarea } from './eliminar-tarea/eliminar-tarea';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -18,7 +19,12 @@ export class GestorTareas {
   tareasVista$ = this.tareaVista.asObservable()
 
 
-  constructor(private tareaService: TareaService, private estadoService: CatEstadoService, private prioridadService: CatPrioridadesService, private dialog: MatDialog) {
+  constructor(
+    private tareaService: TareaService,
+    private estadoService: CatEstadoService,
+    private prioridadService: CatPrioridadesService,
+    private dialog: MatDialog
+  ) {
     tareaService.obternerTodasLasTareas()
     this.tareasVista$ = combineLatest([
       this.tareaService.tareas$,
@@ -37,7 +43,6 @@ export class GestorTareas {
     console.log(this.tareasVista$);
 
   }
-  
 
   nuevaTarea() {
     const ref = this.dialog.open(NuevaTarea, {
@@ -54,6 +59,23 @@ export class GestorTareas {
       }
     });
 
+  }
+
+  cambiarEstado(tarea: any) {
+    let nuevoEstado = tarea.idEstado;
+
+    if (tarea.idEstado === 1) {
+      nuevoEstado = 2;
+    } else if (tarea.idEstado === 2) {
+      nuevoEstado = 3;
+    }
+
+    let tareaActualizada = {
+      ...tarea,
+      idEstado: nuevoEstado
+    };
+
+    this.tareaService.actualizarTarea(tareaActualizada);
   }
 
   editarTarea(tarea: any) {
@@ -73,5 +95,16 @@ export class GestorTareas {
     });
   }
 
+  eliminarTarea(tarea: any) {
+    const ref = this.dialog.open(EliminarTarea, {
+      width: '300px',
+      data: { tarea }
+    });
 
+    ref.afterClosed().subscribe(confirmado => {
+      if (confirmado) {
+        this.tareaService.eliminarTarea(tarea.idTarea);
+      }
+    });
+  }
 }

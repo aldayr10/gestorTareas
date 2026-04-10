@@ -30,8 +30,9 @@ export class TareaService {
   this.tareaSubject.next([...this.tareas])
   }
 
-  eliminarTarea(){
-    
+  eliminarTarea(id:number){
+  this.tareas=this.tareas.filter(t => t.idTarea !== id);
+  this.tareaSubject.next([...this.tareas])
   }
 
 }

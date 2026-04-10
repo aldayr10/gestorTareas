@@ -3,7 +3,7 @@
     <div class="tittle">
       <h2>Gestor tareas</h2>
 
-      <button class="tareaNueva">nueva Tarea</button>
+      <button class="tareaNueva" (click)="nuevaTarea()">nueva Tarea</button>
     </div>
     <table class="table">
       <tr>
@@ -46,7 +46,7 @@
           </td>
 
           <td>
-            @if (tarea.estadoNombre === 'En Completada') {
+            @if (tarea.estadoNombre === 'Completada') {
             <div class="card">
               <div><label for="">Titulo: </label>{{ tarea.titulo }}</div>
               <div><label for="">Descripcion: </label>{{ tarea.descripcion }}</div>
@@ -57,9 +57,9 @@
 
           <td>
             <div class="buttons">
-              <button >cambiar estado</button>
-              <button (click)="nuevaTarea()">Editar</button>
-              <button >eliminar</button>
+              <button (click)="cambiarEstado(tarea)">cambiar estado</button>
+              <button (click)="editarTarea(tarea)">Editar</button>
+              <button (click)="eliminarTarea(tarea)">eliminar</button>
             </div>
           </td>
 
