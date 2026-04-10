@@ -1,1 +1,72 @@
-<p>gestor-tareas works!</p>
+<div class="overley">
+  <div class="content">
+    <div class="tittle">
+      <h2>Gestor tareas</h2>
+
+      <button class="tareaNueva">nueva Tarea</button>
+    </div>
+    <table class="table">
+      <tr>
+        <th>Todos</th>
+        <th>Pendiente</th>
+        <th>En Progreso</th>
+        <th>Completada</th>
+        <th>Gestión</th>
+      </tr>
+
+      <tbody>
+        @if (tareasVista$ | async; as tareas) {
+        @for (tarea of tareas; track tarea.idTarea) {
+        <tr>
+
+          <td>
+            <div>
+              {{ tarea.titulo }}
+            </div>
+          </td>
+
+          <td>
+            @if (tarea.estadoNombre === 'Pendiente') {
+            <div class="card">
+              <div><label for="">Titulo: </label>{{ tarea.titulo }}</div>
+              <div><label for="">Descripcion: </label>{{ tarea.descripcion }}</div>
+              <div><label for="">Prioridad: </label> {{ tarea.prioridadNombre }}</div>
+            </div>
+            }
+          </td>
+
+          <td>
+            @if (tarea.estadoNombre === 'En Progreso') {
+            <div class="card">
+              <div><label for="">Titulo: </label>{{ tarea.titulo }}</div>
+              <div><label for="">Descripcion: </label>{{ tarea.descripcion }}</div>
+              <div><label for="">Prioridad: </label> {{ tarea.prioridadNombre }}</div>
+            </div>
+            }
+          </td>
+
+          <td>
+            @if (tarea.estadoNombre === 'En Completada') {
+            <div class="card">
+              <div><label for="">Titulo: </label>{{ tarea.titulo }}</div>
+              <div><label for="">Descripcion: </label>{{ tarea.descripcion }}</div>
+              <div><label for="">Prioridad: </label> {{ tarea.prioridadNombre }}</div>
+            </div>
+            }
+          </td>
+
+          <td>
+            <div class="buttons">
+              <button>cambiar estado</button>
+              <button>Editar</button>
+              <button>eliminar</button>
+            </div>
+          </td>
+
+        </tr>
+        }
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

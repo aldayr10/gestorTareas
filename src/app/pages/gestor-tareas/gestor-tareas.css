@@ -1,0 +1,28 @@
+.overley {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.tittle{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.tareaNueva{
+    margin: 15px;
+    padding: 10px;
+}
+table{
+    width: 90%;
+}
+.buttons{
+    display: flex;
+    width: 30%;
+}
+.card {
+    padding: 10px;
+    border: 2px outset #000000;
+    border-radius: 5px;
+    
+}

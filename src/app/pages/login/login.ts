@@ -34,7 +34,7 @@ export class Login implements OnInit {
     if (token) {
       const idUser = token ? JSON.parse(token).idUser : null;
   
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/gestor-tareas']);
     } 
   }
 
@@ -44,7 +44,7 @@ export class Login implements OnInit {
       const { email, password } = this.loginForm.value;
       const success = this.authService.login(email, password);
       if (success) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['gestor-tareas']);
       } else {
         alert('Email o contraseña incorrectos');
       }
@@ -60,7 +60,5 @@ export class Login implements OnInit {
   registrarse() {
     this.router.navigate(['/register']);
   }
-
-
 
 }
