@@ -1,0 +1,32 @@
+.overley {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding:  10px;
+    border: 2px outset #000000;
+    
+}
+
+.tittle{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.buttons{
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+.card {
+    padding: 10px;
+    border: 2px outset #000000;
+    border-radius: 5px;
+    
+}
+div{
+    display: grid;
+    padding: 10px;
+    grid-column: auto;
+}

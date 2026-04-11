@@ -7,6 +7,7 @@ import { CatPrioridadesService } from '../../services/cat-prioridades-service';
 import { NuevaTarea } from './nueva-tarea/nueva-tarea';
 import { EliminarTarea } from './eliminar-tarea/eliminar-tarea';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gestor-tareas',
@@ -23,7 +24,8 @@ export class GestorTareas {
     private tareaService: TareaService,
     private estadoService: CatEstadoService,
     private prioridadService: CatPrioridadesService,
-    private dialog: MatDialog
+    private dialog: MatDialog, 
+    private router:Router
   ) {
     tareaService.obternerTodasLasTareas()
     this.tareasVista$ = combineLatest([
@@ -108,5 +110,10 @@ export class GestorTareas {
         this.tareaService.eliminarTarea(tarea.idTarea);
       }
     });
+  }
+  
+  cerrarSecion(){
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   }
 }

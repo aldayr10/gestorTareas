@@ -1,46 +1,49 @@
-<div >
+<div class="overley">
+  <div class="content">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="title">
+        <div>
+          <h2>Crear Cuenta</h2>
+          <h4>Únete y gestiona tus torneos</h4>
+        </div>
+      </div>
 
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <h2>Crear Cuenta</h2>
-    <h4>Únete y gestiona tus torneos</h4>
-
-
-    <div>
-      <label>Email:</label>
+      <div>
+        <label>Email:</label>
         <input type="email" formControlName="email" placeholder="Ingresa tu email">
-      @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
-      <div>Email inválido</div>
-      }
-    </div>
+        @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+        <div>Email inválido</div>
+        }
+      </div>
 
-    <div>
-      <label>Contraseña:</label>
+      <div>
+        <label>Contraseña:</label>
         <input type="password" formControlName="password" placeholder="Min 6 caracteres">
-      @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
-      <div>Mínimo 6 caracteres</div>
-      }
-    </div>
+        @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+        <div>Mínimo 6 caracteres</div>
+        }
+      </div>
 
-    <div>
-      <label>Confirmar Contraseña:</label>
+      <div>
+        <label>Confirmar Contraseña:</label>
         <input type="password" formControlName="confirmPassword" placeholder="Confirma tu contraseña">
-      @if (registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched) {
-      <div>Las contraseñas no coinciden</div>
-      }
-    </div>
+        @if (registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched) {
+        <div>Las contraseñas no coinciden</div>
+        }
+      </div>
 
 
 
 
 
-    <div>
-      <button type="submit">Crear Cuenta</button>
-    </div>
+      <div>
+        <button type="submit">Crear Cuenta</button>
+      </div>
 
-    <div>
-      <a>¿Ya tienes cuenta? <a href="#">Iniciar sesión</a></a>
-    </div>
+      <div>
+        <a>¿Ya tienes cuenta? <a href="#">Iniciar sesión</a></a>
+      </div>
 
-  </form>
-
+    </form>
+  </div>
 </div>

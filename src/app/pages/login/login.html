@@ -1,42 +1,43 @@
-<div >
-
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
+<div class="overley">
+  <div class="content">
     
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-    <h2>Gestor Tareas</h2>
 
+      <div class="tittle">
+        <h2 class="title">Gestor Tareas</h2>
 
-    <div>
-      <label>Usuario:</label>
-      <input type="email" formControlName="email" placeholder="Ingresa tu email">
+      </div>  
+        <div>
+          <label>Usuario:</label>
+          <input type="email" formControlName="email" placeholder="Ingresa tu email">
 
-      @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
-      <div>Email inválido</div>
-      }
-    </div>
+          @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+          <div>Email inválido</div>
+          }
+        </div>
 
-    <div>
-      <label>Contraseña:</label>
-      <input type="password" formControlName="password" placeholder="Ingresa tu contraseña">
+        <div>
+          <label>Contraseña:</label>
+          <input type="password" formControlName="password" placeholder="Ingresa tu contraseña">
 
-      @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched){
-        @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched){
-        <div>La contraseña es obligatoria</div>
-        }
+          @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched){
+          @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched){
+          <div>La contraseña es obligatoria</div>
+          }
 
-        @if(loginForm.get('password')?.errors?.['minlength']){
-        <div>La contraseña debe tener mínimo 6 caracteres</div>
-        }
-      }
-    </div>
+          @if(loginForm.get('password')?.errors?.['minlength']){
+          <div>La contraseña debe tener mínimo 6 caracteres</div>
+          }
+          }
+        </div>
+
+        <div class="buttons">
+        <button type="submit">Iniciar Sesión</button>
+        <button (click)="registrarse()">Registrarse</button>
+        
+        </div>
+      </form>
     
-    
-    <button type="submit" >Iniciar Sesión</button>
-    <div >
-      <a  ref="#" (click)="registrarse()">Regístrate aquí</a>
-    </div>
-    
-  </form>
-
+  </div>
 </div>
